@@ -1,0 +1,73 @@
+
+  <link  rel="stylesheet" href="/css/user_profile.css">
+  <h1>
+      Social App/Profile
+  </h1>
+  
+  
+  <%if(locals.profile_user){%>
+    <img src="<%=profile_user.avatar%>"alt="<%=user.name%>" width="100" height="80">
+    <p><%=profile_user.name%></p>
+    <p><%=profile_user.email%></p>
+    <%if(user.id==profile_user.id){%>
+      <form action="/users/update/<%=profile_user.id%>" enctype="multipart/form-data" method="POST">
+        <input type="text" name="name" placeholder="Your new Name" value="<%=profile_user.name%>" required>
+        <input type="email" name="email" placeholder="Your email" value="<%=profile_user.email%>" required>
+
+        <input type="file" name="avatar" placeholder="Profile Picture">
+        <input type="submit" value="Update">
+      </form>
+      <br>
+      <strong>My friends</strong>
+      <!-- <%for(friend of me.friends){%>
+        <p> 
+             
+          <a href="/users/profile/<%=friend.id%>"><%=friend.name%></a>
+        </p>
+      <%}%> -->
+    <%}else{%>
+     
+      <%if(check==4){%>
+      <a href="/friends/friendRequest/?id=<%=profile_user._id%>">Send Request</a> 
+      <%}else if(check==1){%>
+      <a href="/friends/unfriend/?id=<%=profile_user._id%>">Unfriend</a> 
+      <%}else if(check==2){%>
+        <a href="/friends/cancelFriendRequest/?id=<%=profile_user._id%>">Cancel Request</a> 
+      <%}else if(check==3){%>
+        <a href="/friends/acceptRequest/<%=profile_user._id%>">Accept Request </a> 
+        <a href="/friends/cancelFriendRequest/?id=<%=profile_user._id%>">Cancel Request</a>
+      <%}%>
+    <%}%>
+    
+  <%}else{%>
+   
+    <img src="<%=user.avatar%>"alt="<%=user.name%>" width="100" height="80">
+    <p><%=user.name%></p>
+    <p><%=user.email%></p>
+
+    <form action="/users/update/<%=user.id%>" enctype="multipart/form-data" method="POST">
+      <input type="text" name="name" placeholder="Your new Name" value="<%user.name%>" required>
+      <input type="email" name="email" placeholder="Your email" value="<%=user.email%>" required>
+      <input type="file" name="avatar" placeholder="Profile Picture">
+      <input type="submit" value="Update">
+    </form>
+    <strong>My friend Requests</strong>
+      <%for(req of requests){%>
+        <p> 
+             
+          <%=req.from_user.name%><a href="/friends/acceptRequest/<%=req.from_user._id%>"> accept request </a> <a href="/friends/cancelFriendRequest/?id=<%=req.from_user._id%>">Cancel Request</a>
+        </p>
+      <%}%>
+      <p>
+    <strong>My friends</strong>
+      <%for(friend of me.friends){%>
+        <p> 
+             
+          <a href="/users/profile/<%=friend.id%>"><%=friend.name%></a>
+        </p>
+      <%}%>
+    </p>
+  <%}%>
+  
+  
+    
