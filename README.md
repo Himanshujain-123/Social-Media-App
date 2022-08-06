@@ -1,4 +1,4 @@
-# SocailApp
+# Social_Media_App
 
 
 
