@@ -70,7 +70,7 @@ Each user will have a profile where details will we given about the users,his po
 
 ## Author Info
 
-- LinkedIn - [Nilotpal](https://www.linkedin.com/in/nilotpal-das-842b071a1/)
+- LinkedIn - [Himanshu Jain](http://www.linkedin.com/in/himanshujain0457)
 
 
 [Back To The Top](#read-me-template)
